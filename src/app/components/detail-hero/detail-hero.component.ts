@@ -20,6 +20,7 @@ export class DetailHeroComponent implements OnInit {
   ngOnInit(): void {
     this.idUrl = this.route.snapshot.params.id;
     this.getHeroe()
+    window.scroll(0, 0);
   }
 
   getHeroe() {
