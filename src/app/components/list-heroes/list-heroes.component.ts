@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { HeroeModel } from 'src/app/model/heroe.model';
 
 import { HeroesService } from './../../services/heroes.service';
 import { Subscription } from 'rxjs';
@@ -19,9 +17,8 @@ export class ListHeroesComponent implements OnInit, OnDestroy {
   combat: number;
   buscador: string = '';
   load: boolean = true;
-  p: number = 1;
 
-  constructor(private heroesService: HeroesService, private spinner: NgxSpinnerService) { }
+  constructor(private heroesService: HeroesService) { }
 
   ngOnInit(): void {
     this.getHeores()
@@ -32,12 +29,11 @@ export class ListHeroesComponent implements OnInit, OnDestroy {
       (res: any) => {
         this.heroes = getRandomItems(res);
         this.load = false
+      }, error => {
+        console.log(error);
       });
   }
 
-  onSearchChange() {
-    this.p = 1;
-  }
 
   ngOnDestroy(): void {
     this.heroesSub$.unsubscribe();
