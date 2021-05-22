@@ -1,0 +1,81 @@
+<div class="contianer">
+  <div class="row row justify-content-md-center">
+    <div class="col-12 cols">
+      <img src="../../../assets/img/title.png" class="img-fluid" width="500" alt="">
+      <img [src]="heroe.images.md" alt="">
+      <h1 class="text-center">{{heroe.name}}</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <p>Inteligencia</p>
+            <ngb-progressbar [animated]="true" style="height: 2em;" type="success" textType="white"
+              [value]="heroe.powerstats.intelligence">
+            </ngb-progressbar>
+            <br>
+            <p>Fuerza</p>
+            <ngb-progressbar [animated]="true" style="height: 2em;" type="warning" textType="white"
+              [value]="heroe.powerstats.strength">
+            </ngb-progressbar>
+            <br>
+            <p>Velocidad</p>
+            <ngb-progressbar [animated]="true" style="height: 2em;" type="danger" textType="white"
+              [value]="heroe.powerstats.speed">
+            </ngb-progressbar>
+            <br>
+          </div>
+          <div class="col-6">
+            <p>Durabilidad</p>
+            <ngb-progressbar [animated]="true" style="height: 2em;" type="info" textType="white"
+              [value]="heroe.powerstats.durability">
+            </ngb-progressbar>
+            <br>
+            <p>Poder</p>
+            <ngb-progressbar [animated]="true" style="height: 2em;" type="success" textType="white"
+              [value]="heroe.powerstats.power">
+            </ngb-progressbar>
+            <br>
+            <p>Combate</p>
+            <ngb-progressbar [animated]="true" style="height: 2em;" type="warning" textType="white"
+              [value]="heroe.powerstats.combat">
+            </ngb-progressbar>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#occupation"
+                aria-expanded="false" aria-controls="occupation">Trabajo</button>
+              &nbsp;
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#biografia"
+                aria-expanded="false" aria-controls="biografia">Biografia</button>
+            </p>
+            <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="occupation">
+                  <div class="card card-body">
+                    {{heroe.work.occupation}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="biografia">
+                  <div class="card card-body">
+                    <b>Alineación: </b>{{heroe.biography.alignment}}
+                    <b>Aleters: </b>{{heroe.biography.alterEgos}}
+                    <b>Editora: </b>{{heroe.biography.publisher}}
+                    <hr>
+                    <b>Grupo: </b>{{heroe.connections.groupAffiliation}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

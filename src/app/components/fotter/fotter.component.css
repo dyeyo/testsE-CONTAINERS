@@ -1,0 +1,18 @@
+.pie{
+    height: 7em;
+    background: #f8f8f8;
+}
+img{
+    position: absolute;
+    margin-left: 44%;
+    margin-top: 22px;
+}
+
+@media (max-width: 600px) {
+    img {
+        position: absolute;
+        margin-left: 25%;
+        margin-top: 16px;
+    }
+}
+
