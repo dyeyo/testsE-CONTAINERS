@@ -4,6 +4,7 @@ import { HeroeModel } from 'src/app/model/heroe.model';
 
 import { HeroesService } from './../../services/heroes.service';
 import { Subscription } from 'rxjs';
+import { getRandomItems } from 'src/app/helpers/array.helper';
 
 
 @Component({
@@ -29,13 +30,8 @@ export class ListHeroesComponent implements OnInit, OnDestroy {
   getHeores() {
     this.heroesSub$ = this.heroesService.getData().subscribe(
       (res: any) => {
-        this.heroes = res;
-        // let Random = Math.floor(Math.random() * 20);
-        // let Position = Random >= 20 ? Random : 20;
-        // console.log(this.heroes[Position]);
+        this.heroes = getRandomItems(res);
         this.load = false
-        // this.p = Math.floor(Math.random() * 12);
-
       });
   }
 

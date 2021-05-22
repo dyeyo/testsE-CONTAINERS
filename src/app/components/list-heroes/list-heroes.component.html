@@ -14,8 +14,7 @@
 		<div *ngIf="load" class="spinner-border text-center" role="status">
 		</div>
 		<ng-container *ngIf="!load">
-			<div class="col-md-4 mt-3"
-				*ngFor="let heroe of heroes | filterHeroe:buscador | paginate: { itemsPerPage: 20, currentPage: p };let i = index">
+			<div class="col-md-4 mt-3" *ngFor="let heroe of heroes | filterHeroe:buscador">
 				<div class="card" style="width: 18rem;">
 					<img [src]="heroe.images.md" [routerLink]="[ '/heroe/', heroe.id ]" class="card-img-top"
 						[alt]="heroe.name">
@@ -46,8 +45,7 @@
 				</div>
 			</div>
 		</ng-container>
-		<pagination-controls class="mt-3" (pageChange)="p = $event" previousLabel="Anterios" nextLabel="Siguiente">
-		</pagination-controls>
+
 
 
 	</div>
