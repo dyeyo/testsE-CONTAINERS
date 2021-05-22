@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +26,7 @@ import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
     FilterHeroePipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -35,7 +35,8 @@ import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     NgbPaginationModule,
     NgbAlertModule,
-    NgbProgressbarModule
+    NgbProgressbarModule,
+    BrowserTransferStateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

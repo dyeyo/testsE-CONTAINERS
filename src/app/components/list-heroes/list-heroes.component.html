@@ -1,10 +1,12 @@
 <div class="container">
 
+	{{load}}
+
 	<div class="row justify-content-md-center mt-5">
 		<div class="col-md-6 col-sm-12">
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control" (input)="onSearchChange()" id="floatingInput"
-					[(ngModel)]="buscador" placeholder="Buscar personaje">
+				<input type="text" class="form-control" id="floatingInput" [(ngModel)]="buscador"
+					placeholder="Buscar personaje">
 				<label for="floatingInput">Buscar personaje</label>
 			</div>
 		</div>
@@ -16,28 +18,28 @@
 		<ng-container *ngIf="!load">
 			<div class="col-md-4 mt-3" *ngFor="let heroe of heroes | filterHeroe:buscador">
 				<div class="card" style="width: 18rem;">
-					<img [src]="heroe.images.md" [routerLink]="[ '/heroe/', heroe.id ]" class="card-img-top"
-						[alt]="heroe.name">
+					<img [src]="heroe?.images.md" [routerLink]="[ '/heroe/', heroe.id ]" class="card-img-top"
+						[alt]="heroe?.name">
 					<div class="card-body">
-						<h5 class="card-title">{{heroe.name}}</h5>
+						<h5 class="card-title">{{heroe?.name}}</h5>
 						<p class="card-text">Poderes:</p>
 						<span class="badge rounded-pill bg-primary">
-							<b>Inteligencia</b> {{heroe.powerstats.intelligence}} %
+							<b>Inteligencia</b> {{heroe?.powerstats.intelligence}} %
 						</span>
 						<span class="badge rounded-pill bg-danger">
-							<b>Fuerza:</b> {{heroe.powerstats.strength}} %
+							<b>Fuerza:</b> {{heroe?.powerstats.strength}} %
 						</span>
 						<span class="badge rounded-pill bg-success">
-							<b>Velocidad:</b> {{heroe.powerstats.speed}} %
+							<b>Velocidad:</b> {{heroe?.powerstats.speed}} %
 						</span>
 						<span class="badge rounded-pill bg-primary">
-							<b>Durabilidad:</b> {{heroe.powerstats.durability}} %
+							<b>Durabilidad:</b> {{heroe?.powerstats.durability}} %
 						</span>
 						<span class="badge rounded-pill bg-warning">
-							<b>Poder:</b> {{heroe.powerstats.power}} %
+							<b>Poder:</b> {{heroe?.powerstats.power}} %
 						</span>
 						<span class="badge rounded-pill bg-dark">
-							<b>Combate:</b> {{heroe.powerstats.combat}} %
+							<b>Combate:</b> {{heroe?.powerstats.combat}} %
 						</span>
 						<a href="#" class="btn btn-primary mt-3" [routerLink]="[ '/heroe/', heroe.id ]">Conce mas de el
 							aquí</a>

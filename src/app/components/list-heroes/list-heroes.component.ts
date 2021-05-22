@@ -1,16 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { HeroesService } from './../../services/heroes.service';
 import { Subscription } from 'rxjs';
 import { getRandomItems } from 'src/app/helpers/array.helper';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
 
+const HERO_KEY = makeStateKey('HERO_KEY');
 
 @Component({
   selector: 'app-list-heroes',
   templateUrl: './list-heroes.component.html',
   styleUrls: ['./list-heroes.component.css']
 })
-export class ListHeroesComponent implements OnInit, OnDestroy {
+export class ListHeroesComponent implements OnInit {
 
   heroesSub$: Subscription;
   heroes: Array<any>;
@@ -18,27 +20,34 @@ export class ListHeroesComponent implements OnInit, OnDestroy {
   buscador: string = '';
   load: boolean = true;
 
-  constructor(private heroesService: HeroesService) { }
+
+  constructor(
+    private heroesService: HeroesService,
+    private state: TransferState
+  ) { }
 
   ngOnInit(): void {
     this.getHeores()
   }
 
   getHeores() {
-    this.heroesSub$ = this.heroesService.getData().subscribe(
-      (res: any) => {
-        this.heroes = getRandomItems(res);
-        this.load = false
-      }, error => {
-        console.log(error);
-      });
+    this.heroes = this.state.get<Array<any>>(HERO_KEY, null);
+
+    if (!this.heroes) {
+      this.heroesService.getData().subscribe(
+        (res: any) => {
+          this.heroes = getRandomItems(res);
+          this.state.set<Array<any>>(HERO_KEY, this.heroes);
+          this.load = false;
+        }, error => {
+          console.log(error);
+        });
+    } else {
+      this.load = false;
+    }
+
+
+
   }
-
-
-  ngOnDestroy(): void {
-    this.heroesSub$.unsubscribe();
-  }
-
-
 
 }
