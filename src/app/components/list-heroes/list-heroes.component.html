@@ -18,8 +18,8 @@
 		<ng-container *ngIf="!load">
 			<div class="col-md-4 mt-3" *ngFor="let heroe of heroes | filterHeroe:buscador">
 				<div class="card" style="width: 18rem;">
-					<img [src]="heroe?.images.md" [routerLink]="[ '/heroe/', heroe.id ]" class="card-img-top"
-						[alt]="heroe?.name">
+					<img [src]="heroe?.images.md" [routerLink]="[ '/heroe/', heroe.id ]" class="card-img-top img-fluid"
+						height="40" [alt]="heroe?.name">
 					<div class="card-body">
 						<h5 class="card-title">{{heroe?.name}}</h5>
 						<p class="card-text">Poderes:</p>
@@ -41,8 +41,9 @@
 						<span class="badge rounded-pill bg-dark">
 							<b>Combate:</b> {{heroe?.powerstats.combat}} %
 						</span>
-						<a href="#" class="btn btn-primary mt-3" [routerLink]="[ '/heroe/', heroe.id ]">Conoce más de el
-							aquí</a>
+						<a href="#" class="btn btn-primary mt-3" [routerLink]="[ '/heroe/', heroe.id ]">
+							Conoce más de el aquí
+						</a>
 					</div>
 				</div>
 			</div>

@@ -6,6 +6,9 @@
     -moz-box-shadow: -1px 3px 23px 1px rgba(0,0,0,0.75);
     box-shadow: -1px 3px 23px 1px rgba(0,0,0,0.75);
 }
+.card-img-top{
+    height: 20em;
+}
 
 @media (max-width: 600px) {
     .card{ width: 21rem !important;}
